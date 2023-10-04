@@ -38,3 +38,5 @@ max_health = 100.0
 width = 0
 height = 0
 fill_color = Color(1, 0, 0, 0)
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]

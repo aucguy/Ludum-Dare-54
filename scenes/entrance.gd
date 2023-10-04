@@ -6,7 +6,7 @@ signal enter_room
 
 func _on_body_entered(body):
 	if body.is_in_group('player'):
-		enter_room.emit()
+		enter_room.emit(self)
 
 func lock():
 	if not active:
@@ -21,3 +21,6 @@ func unlock():
 	for child in get_children():
 		if child.is_in_group('gates'):
 			child.unlock()
+			
+func restart_position():
+	return $RestartPosition.global_position

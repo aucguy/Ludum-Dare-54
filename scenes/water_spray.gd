@@ -30,3 +30,7 @@ func start_spray(direction):
 func end_spray():
 	spraying = false
 	direction = null
+
+func restart():
+	end_spray()
+	get_tree().call_group('water_particles', 'queue_free')

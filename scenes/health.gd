@@ -60,7 +60,10 @@ func set_health(amount):
 	queue_redraw()
 	change.emit()
 
-	
+func restart():
+	is_dead = false
+	set_health(max_health)
+
 func _draw():
 	var rect = Rect2(-width / 2, -height / 2, width * health / max_health, height)
 	draw_rect(rect, fill_color)
@@ -68,4 +71,3 @@ func _draw():
 	draw_line(Vector2(width / 2, -height / 2), Vector2(width / 2, height / 2), stroke_color, stroke_width)
 	draw_line(Vector2(width / 2, height / 2), Vector2(-width / 2, height / 2), stroke_color, stroke_width)
 	draw_line(Vector2(-width / 2, height / 2), Vector2(-width / 2, -height / 2), stroke_color, stroke_width)
-

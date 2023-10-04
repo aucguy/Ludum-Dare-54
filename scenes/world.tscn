@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dosf4lp23ahyl"]
+[gd_scene load_steps=4 format=3 uid="uid://dosf4lp23ahyl"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_abwdn"]
 [ext_resource type="PackedScene" uid="uid://dbbpygbdbunoe" path="res://scenes/map.tscn" id="2_4yppk"]
 [ext_resource type="PackedScene" uid="uid://bnknlwo180ra1" path="res://scenes/player.tscn" id="3_uvawa"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_abwdn")
 
 [node name="Map" parent="." instance=ExtResource("2_4yppk")]
 
@@ -11,3 +13,6 @@
 position = Vector2(0, 1)
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[connection signal="enter_room" from="Map" to="." method="_on_map_enter_room"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]

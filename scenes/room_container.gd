@@ -1,11 +1,13 @@
 @tool
 extends Area2D
 
+signal enter_room
+
 var instance = null
 var rect = null
 var active = false
-var big_fires_beaten = 0
-var total_big_fires = 0
+var big_fires_beaten
+var total_big_fires
 
 @export var room: PackedScene:
 	set(value):
@@ -20,6 +22,9 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
+	big_fires_beaten = 0
+	total_big_fires = 0
+	active = false
 	instance = room.instantiate()
 	var tilemap = instance.get_node('TileMap')
 	var tile_size = tilemap.tile_set.tile_size
@@ -37,7 +42,7 @@ func _ready():
 	for child in instance.get_children():
 		if child.is_in_group('entrances'):
 			instance.remove_child(child)
-			child.connect('enter_room', enter_room)
+			child.connect('enter_room', enter_room_callback)
 			add_child(child)
 		elif child.is_in_group('big_fire'):
 			child.connect('dead', beat_big_fire)
@@ -79,9 +84,11 @@ func _on_body_entered(body):
 		queue_redraw()
 		collision_layer = 0
 
-func enter_room():
+func enter_room_callback(entrance):
 	if Engine.is_editor_hint():
 		return
+	
+	enter_room.emit(self, entrance)
 	
 	active = true
 	add_child(instance)
@@ -108,3 +115,12 @@ func beat_room():
 			child.disable()
 			
 	get_tree().call_group('enemies', 'queue_free')
+	
+func destroy():
+	instance.queue_free()
+	
+	for child in get_children():
+		if child.is_in_group('entrances'):
+			child.queue_free()
+			
+	_ready()

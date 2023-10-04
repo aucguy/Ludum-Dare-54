@@ -41,4 +41,7 @@ position = Vector2(-16, -16)
 [node name="Gate2" parent="." instance=ExtResource("3_bqtbf")]
 position = Vector2(-16, 16)
 
+[node name="RestartPosition" type="Marker2D" parent="."]
+position = Vector2(-64, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

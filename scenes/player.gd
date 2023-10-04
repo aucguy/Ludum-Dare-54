@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal dead
+
 @export var input_velocity: int = 100
 @export var spray_amount: int = 5.0
 @onready var direction = Vector2(1, 0)
@@ -32,3 +34,11 @@ func _physics_process(delta):
 
 func hurt(amount):
 	$Health.increment(-amount)
+
+func _on_health_dead():
+	dead.emit()
+	
+func restart(restart_position):
+	global_position = restart_position
+	$WaterSpray.restart()
+	$Health.restart()
