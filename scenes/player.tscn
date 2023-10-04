@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnknlwo180ra1"]
+
+[ext_resource type="Texture2D" uid="uid://bubmkyixhpagj" path="res://images/player.png" id="1_b3nop"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_lebjm"]
+[ext_resource type="PackedScene" uid="uid://bu333xpclwnas" path="res://scenes/water_spray.tscn" id="3_xqv0s"]
+[ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="4_hfo1k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qy8r1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b3nop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmx27"]
+radius = 16.0312
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_lebjm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qy8r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lmx27")
+
+[node name="WaterSpray" parent="." groups=["player"] instance=ExtResource("3_xqv0s")]
+
+[node name="Health" parent="." instance=ExtResource("4_hfo1k")]
+max_health = 100.0
+width = 0
+height = 0
+fill_color = Color(1, 0, 0, 0)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu333xpclwnas"]
+
+[ext_resource type="Script" path="res://scenes/water_spray.gd" id="1_123cq"]
+[ext_resource type="PackedScene" uid="uid://dkhnk127p83fc" path="res://scenes/water_spray_particle.tscn" id="2_vni7h"]
+
+[node name="WaterSpray" type="Node2D"]
+script = ExtResource("1_123cq")
+particle_scene = ExtResource("2_vni7h")
+max_distance = 500

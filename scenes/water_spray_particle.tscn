@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkhnk127p83fc"]
+
+[ext_resource type="Texture2D" uid="uid://bymdjuvncacvv" path="res://images/water_spray_particle.png" id="1_5i4sv"]
+[ext_resource type="Script" path="res://scenes/water_spray_particle.gd" id="1_87kyh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ho11x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5i4sv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hiwh3"]
+radius = 4.0
+
+[node name="WaterSprayParticle" type="Area2D" groups=["water_particles"]]
+collision_layer = 4
+script = ExtResource("1_87kyh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ho11x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hiwh3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

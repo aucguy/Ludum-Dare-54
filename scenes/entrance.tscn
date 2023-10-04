@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://kagfojcqpehh"]
+
+[ext_resource type="TileSet" uid="uid://bbbu21713u1oi" path="res://resources/tileset.tres" id="1_aiml4"]
+[ext_resource type="Script" path="res://scenes/entrance.gd" id="1_iim0v"]
+[ext_resource type="PackedScene" uid="uid://c5si0yl05id40" path="res://scenes/gate.tscn" id="3_bqtbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqp1f"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj4u0"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0huji"]
+size = Vector2(64, 32)
+
+[node name="Entrance" type="Area2D" groups=["entrances"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_iim0v")
+
+[node name="TileMap" type="TileMap" parent="." groups=["entrances"]]
+tile_set = ExtResource("1_aiml4")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -65536, 0, 0, -1, 0, 0, 65535, 0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 0)
+shape = SubResource("RectangleShape2D_gqp1f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(32, -48)
+shape = SubResource("RectangleShape2D_fj4u0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(32, 48)
+shape = SubResource("RectangleShape2D_0huji")
+
+[node name="Gate" parent="." instance=ExtResource("3_bqtbf")]
+position = Vector2(-16, -16)
+
+[node name="Gate2" parent="." instance=ExtResource("3_bqtbf")]
+position = Vector2(-16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

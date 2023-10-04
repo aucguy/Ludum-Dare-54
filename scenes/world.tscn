@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dosf4lp23ahyl"]
+
+[ext_resource type="PackedScene" uid="uid://dbbpygbdbunoe" path="res://scenes/map.tscn" id="2_4yppk"]
+[ext_resource type="PackedScene" uid="uid://bnknlwo180ra1" path="res://scenes/player.tscn" id="3_uvawa"]
+
+[node name="World" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("2_4yppk")]
+
+[node name="Player" parent="." instance=ExtResource("3_uvawa")]
+position = Vector2(0, 1)
+
+[node name="Camera" type="Camera2D" parent="."]
