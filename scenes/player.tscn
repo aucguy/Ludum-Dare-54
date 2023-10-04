@@ -34,9 +34,9 @@ shape = SubResource("CircleShape2D_lmx27")
 [node name="WaterSpray" parent="." groups=["player"] instance=ExtResource("3_xqv0s")]
 
 [node name="Health" parent="." instance=ExtResource("4_hfo1k")]
-max_health = 100.0
 width = 0
 height = 0
 fill_color = Color(1, 0, 0, 0)
+can_die = true
 
 [connection signal="dead" from="Health" to="." method="_on_health_dead"]

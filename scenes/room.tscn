@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://biul51k28vjpi"]
+[gd_scene load_steps=6 format=3 uid="uid://biul51k28vjpi"]
 
 [ext_resource type="TileSet" uid="uid://bbbu21713u1oi" path="res://resources/tileset.tres" id="1_wp7ef"]
 [ext_resource type="PackedScene" uid="uid://kagfojcqpehh" path="res://scenes/entrance.tscn" id="3_4ohl4"]
 [ext_resource type="PackedScene" uid="uid://dc0waoarlabwy" path="res://scenes/big_fire.tscn" id="3_vl2ob"]
 [ext_resource type="PackedScene" uid="uid://ckj4v7ajmvggm" path="res://scenes/small_fire.tscn" id="4_ntj2r"]
+[ext_resource type="PackedScene" uid="uid://d1l3mlrewpiyg" path="res://scenes/pool.tscn" id="5_yky6p"]
 
 [node name="Room" type="Node2D"]
 
@@ -27,3 +28,6 @@ water_damage = 10
 
 [node name="BigFire2" parent="." instance=ExtResource("3_vl2ob")]
 position = Vector2(256, -96)
+
+[node name="Pool" parent="." instance=ExtResource("5_yky6p")]
+position = Vector2(192, 160)

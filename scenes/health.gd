@@ -28,6 +28,8 @@ extends Node2D
 		stroke_width = value
 		queue_redraw()
 
+@export var can_die: bool = true
+
 @onready var health = max_health
 @onready var is_dead = false
 
@@ -35,7 +37,7 @@ signal dead
 signal change
 
 func increment(amount):
-	if is_dead:
+	if is_dead and can_die:
 		return
 	health += amount
 	if health < 0:
@@ -48,7 +50,7 @@ func increment(amount):
 	change.emit()
 
 func set_health(amount):
-	if is_dead:
+	if is_dead and can_die:
 		return
 	health = amount
 	if health < 0:
@@ -59,6 +61,10 @@ func set_health(amount):
 		health = max_health
 	queue_redraw()
 	change.emit()
+
+func set_max_health(amount):
+	max_health = amount
+	health = max_health
 
 func restart():
 	is_dead = false
