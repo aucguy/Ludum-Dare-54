@@ -9,3 +9,7 @@ func _on_player_dead():
 
 func _on_map_enter_room(room, entrance):
 	restart_entrance = entrance
+	$Player.full_heal()
+
+func _on_map_beat_room():
+	$Player.full_heal()

@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 signal dead
 
-@export var input_velocity: int = 100
-@export var spray_amount: int = 5.0
+const parameters = preload("res://parameters.gd")
+
+#@export var input_velocity: int = parameters.player_speed
+#@export var spray_amount: int = parameters.spray_health_change
+#@export var invincible: bool = parameters.player_invincible
 @onready var direction = Vector2(1, 0)
 
 func _physics_process(delta):
@@ -21,14 +24,14 @@ func _physics_process(delta):
 	if velocity.length() >= 1e-5:
 		velocity = velocity.normalized()
 		direction = velocity
-		velocity *= input_velocity
+		velocity *= parameters.player_speed
 		move_and_slide()
 	else:
 		velocity = Vector2(0, 0)
 	
 	if Input.is_action_pressed('spray_water'):
 		$WaterSpray.start_spray(direction)
-		$Health.increment(-delta * spray_amount)
+		$Health.increment(-delta * parameters.spray_health_change)
 	else:
 		$WaterSpray.end_spray()
 
@@ -36,9 +39,14 @@ func hurt(amount):
 	$Health.increment(-amount)
 
 func _on_health_dead():
+	if parameters.player_invincible:
+		return
 	dead.emit()
 	
 func restart(restart_position):
 	global_position = restart_position
 	$WaterSpray.restart()
+	$Health.restart()
+	
+func full_heal():
 	$Health.restart()

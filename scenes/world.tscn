@@ -14,5 +14,6 @@ position = Vector2(0, 1)
 
 [node name="Camera" type="Camera2D" parent="."]
 
+[connection signal="beat_room" from="Map" to="." method="_on_map_beat_room"]
 [connection signal="enter_room" from="Map" to="." method="_on_map_enter_room"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]

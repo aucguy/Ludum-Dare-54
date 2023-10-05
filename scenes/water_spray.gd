@@ -1,9 +1,11 @@
 extends Node2D
 
+const parameters = preload('res://parameters.gd')
+
 @export var particle_scene: PackedScene
-@export var spawn_rate: int = 50
-@export var velocity: int = 250
-@export var max_distance: int = 100
+#@export var spawn_rate: int = parameters.spray_particle_rate
+#@export var velocity: int = parameters.spray_particle_velocity
+#@export var max_distance: int = parameters.spray_particle_max_distance
 
 @onready var particles = []
 @onready var clock = 0
@@ -15,11 +17,11 @@ func _process(delta):
 	if not spraying:
 		return
 	clock += delta
-	while clock * spawn_rate > total_spawned:
+	while clock * parameters.spray_particle_rate > total_spawned:
 		var angle = randf() * 1 / 4 * PI - 1.0 / 8 * PI
-		var velocity_vec = Vector2(velocity, 0).rotated(angle + direction.angle())
+		var velocity_vec = Vector2(parameters.spray_particle_velocity, 0).rotated(angle + direction.angle())
 		var particle = particle_scene.instantiate()
-		particle.init(velocity_vec, max_distance, global_position)
+		particle.init(velocity_vec, parameters.spray_particle_max_distance, global_position)
 		add_child(particle)
 		total_spawned += 1
 

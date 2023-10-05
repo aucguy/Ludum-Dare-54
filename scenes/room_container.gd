@@ -2,6 +2,7 @@
 extends Area2D
 
 signal enter_room
+signal beat_room
 
 var instance = null
 var rect = null
@@ -88,6 +89,9 @@ func enter_room_callback(entrance):
 	if Engine.is_editor_hint():
 		return
 	
+	if active:
+		return
+	
 	enter_room.emit(self, entrance)
 	
 	active = true
@@ -103,9 +107,9 @@ func enter_room_callback(entrance):
 func beat_big_fire():
 	big_fires_beaten += 1
 	if big_fires_beaten == total_big_fires:
-		beat_room()
+		beat_room_callback()
 
-func beat_room():
+func beat_room_callback():
 	for child in get_children():
 		if child.is_in_group('entrances'):
 			child.unlock()
@@ -115,6 +119,7 @@ func beat_room():
 			child.disable()
 			
 	get_tree().call_group('enemies', 'queue_free')
+	beat_room.emit()
 	
 func destroy():
 	instance.queue_free()

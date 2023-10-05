@@ -1,8 +1,10 @@
 extends Area2D
 
-@export var speed: int = 50
-@export var water_damage: int = 5
-@export var player_damage: int = 5
+const parameters = preload("res://parameters.gd")
+
+@export var speed: int = parameters.enemy_speed
+@export var water_damage: int = parameters.enemy_particle_damage
+@export var player_damage: int = parameters.player_enemy_damage
 
 func _process(delta):
 	var players = get_tree().get_nodes_in_group('player')

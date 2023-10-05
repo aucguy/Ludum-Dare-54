@@ -1,0 +1,19 @@
+{
+	"player_speed": 100,
+	"player_invincible": true,
+	"spray_health_change": 5.0,
+	"spray_particle_rate": 50,
+	"spray_particle_velocity": 250,
+	"spray_particle_max_distance": 250,
+	"enemy_speed": 50,
+	"enemy_particle_damage": 5,
+	"player_enemy_damage": 5,
+	"big_fire_max_spawn_count": 5,
+	"big_fire_spawn_rate": 2,
+	"big_fire_particle_damage": 1,
+	"small_fire_max_spawn_count": 5,
+	"small_fire_spawn_rate": 2,
+	"small_fire_particle_damage": 1,
+	"pool_refill_speed": 10,
+	"pool_capacity": 25
+}
