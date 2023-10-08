@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjdglbqkvyofi"]
+
+[ext_resource type="Script" path="res://scenes/room_interior.gd" id="1_y7v72"]
+
+[node name="RoomInterior" type="Node2D"]
+script = ExtResource("1_y7v72")

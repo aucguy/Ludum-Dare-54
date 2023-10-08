@@ -2,7 +2,11 @@ extends Area2D
 
 signal enter_room
 
+@export var orientation:  = 'left'
 @onready var active = true
+
+func _ready():
+	$Gate.set_orientation(orientation)
 
 func _on_body_entered(body):
 	if body.is_in_group('player'):

@@ -1,5 +1,5 @@
 @tool
-extends Area2D
+extends Node2D
 
 signal enter_room
 signal beat_room
@@ -36,9 +36,9 @@ func _ready():
 	#	Vector2.ZERO,
 	#	rect.size * tile_size
 	#)
-	$CollisionShape2D.position = Vector2(rect.position * tile_size) + \
-		Vector2(rect.size) / 2.0 * Vector2(tile_size)
-	$CollisionShape2D.shape.size = rect.size * tile_size
+	#$CollisionShape2D.position = Vector2(rect.position * tile_size) + \
+	#	Vector2(rect.size) / 2.0 * Vector2(tile_size)
+	#$CollisionShape2D.shape.size = rect.size * tile_size
 	
 	for child in instance.get_children():
 		if child.is_in_group('entrances'):
@@ -83,7 +83,7 @@ func _on_body_entered(body):
 		add_child(instance)
 		move_child(instance, 0)
 		queue_redraw()
-		collision_layer = 0
+		#collision_layer = 0
 
 func enter_room_callback(entrance):
 	if Engine.is_editor_hint():
@@ -98,7 +98,7 @@ func enter_room_callback(entrance):
 	add_child(instance)
 	move_child(instance, 0)
 	queue_redraw()
-	collision_layer = 0
+	#collision_layer = 0
 	
 	for child in get_children():
 		if child.is_in_group('entrances'):

@@ -26,8 +26,27 @@ func _physics_process(delta):
 		direction = velocity
 		velocity *= parameters.player_speed
 		move_and_slide()
+		if velocity.y < 0:
+			$AnimatedSprite2D.play('up')
+			$AnimatedSprite2D.flip_h = false
+		elif velocity.x > 0:
+			if velocity.y > 0.01:
+				$AnimatedSprite2D.play('downright')
+			else:
+				$AnimatedSprite2D.play('right')
+			$AnimatedSprite2D.flip_h = false
+		elif velocity.x < 0:
+			if velocity.y > 0.01:
+				$AnimatedSprite2D.play('downright')
+			else:
+				$AnimatedSprite2D.play('right')
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.play('down')
+			$AnimatedSprite2D.flip_h = false
 	else:
 		velocity = Vector2(0, 0)
+		$AnimatedSprite2D.stop()
 	
 	if Input.is_action_pressed('spray_water'):
 		$WaterSpray.start_spray(direction)

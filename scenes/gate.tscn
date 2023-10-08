@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alk4b"]
-size = Vector2(32, 32)
+size = Vector2(32, 64)
 
 [node name="Gate" type="StaticBody2D" groups=["gates"]]
 collision_mask = 0

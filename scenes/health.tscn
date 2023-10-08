@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddoq2dtf3va6t"]
+[gd_scene load_steps=3 format=3 uid="uid://ddoq2dtf3va6t"]
 
 [ext_resource type="Script" path="res://scenes/health.gd" id="1_h15x3"]
+[ext_resource type="Texture2D" uid="uid://bptkraubohw5w" path="res://images/heatlh.png" id="2_vnm8v"]
 
 [node name="Health" type="Node2D"]
+position = Vector2(-6, -1)
 script = ExtResource("1_h15x3")
-can_die = null
+height = 32
+
+[node name="Empty" type="NinePatchRect" parent="."]
+modulate = Color(1, 0, 0, 0.5)
+z_index = 1
+offset_right = 200.0
+offset_bottom = 32.0
+texture = ExtResource("2_vnm8v")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Filled" type="NinePatchRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 200.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_vnm8v")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 6
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

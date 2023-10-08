@@ -1,0 +1,9 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://jtbt731rdk5m"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_tfjhl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_niwxo"]
+texture = SubResource("CurveTexture_tfjhl")
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_niwxo")

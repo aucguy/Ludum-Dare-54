@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7nd7j5q6uep1"
-path="res://.godot/imported/gate (1).png-3b656773d2acc3868338762c503cd97b.ctex"
+uid="uid://j5jmjjflusu1"
+path="res://.godot/imported/tileset-scaled-x4.png-2fcbecddd509d120ebba16779feb5d0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/gate (1).png"
-dest_files=["res://.godot/imported/gate (1).png-3b656773d2acc3868338762c503cd97b.ctex"]
+source_file="res://images/tileset-scaled-x4.png"
+dest_files=["res://.godot/imported/tileset-scaled-x4.png-2fcbecddd509d120ebba16779feb5d0c.ctex"]
 
 [params]
 

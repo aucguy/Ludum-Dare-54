@@ -10,7 +10,7 @@ func _process(delta):
 	var players = get_tree().get_nodes_in_group('player')
 	if players.size() != 0:
 		await get_tree().physics_frame
-		$NavigationAgent2D.target_position = players[0].position
+		$NavigationAgent2D.target_position = players[0].global_position
 
 #func _physics_process(delta):
 	#if $NavigationAgent2D.is_navigation_finished():
@@ -21,6 +21,24 @@ func _process(delta):
 	velocity *= speed
 	#move_and_slide()
 	position += delta * velocity
+	if velocity.y < 0:
+		$AnimatedSprite2D.play('up')
+		$AnimatedSprite2D.flip_h = false
+	elif velocity.x > 0:
+		if velocity.y > 0.01:
+			$AnimatedSprite2D.play('downright')
+		else:
+			$AnimatedSprite2D.play('right')
+		$AnimatedSprite2D.flip_h = false
+	elif velocity.x < 0:
+		if velocity.y > 0.01:
+			$AnimatedSprite2D.play('downright')
+		else:
+			$AnimatedSprite2D.play('right')
+		$AnimatedSprite2D.flip_h = true
+	elif velocity.y > 0:
+		$AnimatedSprite2D.play('down')
+		$AnimatedSprite2D.flip_h = false
 	
 	#for i in get_slide_collision_count():
 	#	var collision = get_slide_collision(i)

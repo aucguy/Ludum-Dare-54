@@ -13,6 +13,7 @@ const parameters = preload('res://parameters.gd')
 func _ready():
 	$SpawnTimer.wait_time = parameters.small_fire_spawn_rate
 	$SpawnTimer.start()
+	$AnimatedSprite2D.play('on')
 
 func _on_spawn_timer_timeout():
 	var count = get_tree().get_nodes_in_group(group_name).size()
