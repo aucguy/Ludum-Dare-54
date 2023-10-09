@@ -110,6 +110,7 @@ func beat_big_fire():
 		beat_room_callback()
 
 func beat_room_callback():
+	$"/root/SoundManager".play_sound('BeatRoom')
 	for child in get_children():
 		if child.is_in_group('entrances'):
 			child.unlock()

@@ -22,6 +22,7 @@ func _physics_process(delta):
 		velocity.y += 1
 	
 	if velocity.length() >= 1e-5:
+		$"/root/SoundManager".play_sound('Walk')
 		velocity = velocity.normalized()
 		direction = velocity
 		velocity *= parameters.player_speed
@@ -61,6 +62,7 @@ func _on_health_dead():
 	if parameters.player_invincible:
 		return
 	dead.emit()
+	$"/root/SoundManager".play_sound('Death')
 	
 func restart(restart_position):
 	global_position = restart_position

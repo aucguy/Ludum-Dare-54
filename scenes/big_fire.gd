@@ -28,6 +28,7 @@ func _on_area_entered(area):
 
 func _on_health_dead():
 	dead.emit()
+	$"/root/SoundManager".play_sound('DeathLow')
 	disable()
 
 func disable():

@@ -28,10 +28,12 @@ func _process(delta):
 func start_spray(direction):
 	spraying = true
 	self.direction = direction
+	$"/root/SoundManager".play_sound('WaterSpray')
 
 func end_spray():
 	spraying = false
 	direction = null
+	$"/root/SoundManager".stop_sound('WaterSpray')
 
 func restart():
 	end_spray()

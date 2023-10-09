@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbbpygbdbunoe"]
+[gd_scene load_steps=7 format=3 uid="uid://dbbpygbdbunoe"]
 
 [ext_resource type="TileSet" uid="uid://bbbu21713u1oi" path="res://resources/tileset.tres" id="1_gdm2q"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_rj0uy"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ctchucyhs6d5k" path="res://rooms/room_0.tscn" id="4_ocr72"]
 [ext_resource type="PackedScene" uid="uid://b7523ssg0ts72" path="res://rooms/room_1.tscn" id="5_s1uq4"]
 [ext_resource type="PackedScene" uid="uid://bb5rhgpvbhk2c" path="res://rooms/room_2.tscn" id="6_exjvl"]
-[ext_resource type="PackedScene" uid="uid://ckj4v7ajmvggm" path="res://scenes/small_fire.tscn" id="7_as1wy"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_rj0uy")
@@ -27,6 +26,3 @@ room = ExtResource("5_s1uq4")
 [node name="RoomContainer2" parent="." instance=ExtResource("2_i30gl")]
 position = Vector2(2400, -320)
 room = ExtResource("6_exjvl")
-
-[node name="SmallFire" parent="." instance=ExtResource("7_as1wy")]
-position = Vector2(160, 0)

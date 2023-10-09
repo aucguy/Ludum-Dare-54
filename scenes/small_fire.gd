@@ -29,6 +29,7 @@ func _on_area_entered(area):
 func _on_health_dead():
 	#dead.emit()
 	disable()
+	$"/root/SoundManager".play_sound('Death')
 
 func disable():
 	$SpawnTimer.stop()

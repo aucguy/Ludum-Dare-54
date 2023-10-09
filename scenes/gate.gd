@@ -7,6 +7,7 @@ func _ready():
 func lock():
 	show()
 	set_collision_layer_value(1, true)
+	$"/root/SoundManager".play_sound('GateClose')
 
 func unlock():
 	hide()
