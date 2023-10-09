@@ -19,6 +19,8 @@ func lock():
 	for child in get_children():
 		if child.is_in_group('gates'):
 			child.lock()
+	
+	$Semicircle.hide()
 
 func unlock():
 	active = false

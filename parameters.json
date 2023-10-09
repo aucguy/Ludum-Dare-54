@@ -1,6 +1,6 @@
 {
 	"player_speed": 150,
-	"player_invincible": true,
+	"player_invincible": false,
 	"spray_health_change": 3.0,
 	"spray_particle_rate": 50,
 	"spray_particle_velocity": 250,
