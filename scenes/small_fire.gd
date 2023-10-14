@@ -32,6 +32,7 @@ func _on_health_dead():
 	$"/root/SoundManager".play_sound('Death')
 
 func disable():
+	$AnimatedSprite2D.play('off')
 	$SpawnTimer.stop()
 	$Health.hide()
 	$GPUParticles2D.emitting = true

@@ -35,4 +35,5 @@ func disable():
 	$SpawnTimer.stop()
 	$Health.hide()
 	$GPUParticles2D.emitting = true
+	$AnimatedSprite2D.play('off')
 	

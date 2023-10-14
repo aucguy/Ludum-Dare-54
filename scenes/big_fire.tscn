@@ -1,26 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc0waoarlabwy"]
+[gd_scene load_steps=11 format=3 uid="uid://dc0waoarlabwy"]
 
 [ext_resource type="Script" path="res://scenes/big_fire.gd" id="1_vts22"]
 [ext_resource type="Texture2D" uid="uid://cfv4vqcw72smn" path="res://images/big_fire.png" id="1_we6k1"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="3_xsspj"]
 [ext_resource type="Texture2D" uid="uid://tr6a5lcdoprk" path="res://images/fire_particle.png" id="4_5mafw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_phd8u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ti4"]
+atlas = ExtResource("1_we6k1")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuxam"]
 atlas = ExtResource("1_we6k1")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sst0f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7esm"]
 atlas = ExtResource("1_we6k1")
-region = Rect2(0, 128, 128, 128)
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtwxt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_phd8u")
+"texture": SubResource("AtlasTexture_d5ti4")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuxam")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sst0f")
+"texture": SubResource("AtlasTexture_y7esm")
 }],
 "loop": true,
 "name": &"on",
@@ -48,7 +60,7 @@ script = ExtResource("1_vts22")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vtwxt")
-animation = &"on"
+animation = &"off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gy5xw")
