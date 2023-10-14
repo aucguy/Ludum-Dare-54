@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnknlwo180ra1"]
+[gd_scene load_steps=22 format=3 uid="uid://bnknlwo180ra1"]
 
 [ext_resource type="Texture2D" uid="uid://bubmkyixhpagj" path="res://images/player.png" id="1_b3nop"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_lebjm"]
 [ext_resource type="PackedScene" uid="uid://bu333xpclwnas" path="res://scenes/water_spray.tscn" id="3_xqv0s"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="4_hfo1k"]
+[ext_resource type="Texture2D" uid="uid://bymdjuvncacvv" path="res://images/water_spray_particle.png" id="5_fqa4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ximfm"]
 atlas = ExtResource("1_b3nop")
@@ -131,6 +132,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmx27"]
 radius = 16.0312
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxl2j"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = -100.0
+initial_velocity_max = -50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
@@ -152,5 +165,13 @@ position = Vector2(-31, -7)
 width = 0
 height = 0
 fill_color = Color(0.117647, 0.521569, 1, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_bxl2j")
+texture = ExtResource("5_fqa4y")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="dead" from="Health" to="." method="_on_health_dead"]

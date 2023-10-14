@@ -6,7 +6,12 @@ const parameters = preload("res://parameters.gd")
 @export var water_damage: int = parameters.enemy_particle_damage
 @export var player_damage: int = parameters.player_enemy_damage
 
+var is_dead = false
+
 func _process(delta):
+	if is_dead:
+		return
+	
 	var players = get_tree().get_nodes_in_group('player')
 	if players.size() != 0:
 		await get_tree().physics_frame
@@ -58,5 +63,11 @@ func _on_health_dead():
 	die()
 	
 func die():
-	queue_free()
+	is_dead = true
+	$AnimatedSprite2D.hide()
+	$Health.hide()
+	$GPUParticles2D.emitting = true
+	collision_layer = 0
 	$"/root/SoundManager".play_sound('Death')
+	await get_tree().create_timer($GPUParticles2D.lifetime).timeout
+	queue_free()

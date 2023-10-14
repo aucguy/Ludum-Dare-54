@@ -8,8 +8,13 @@ const parameters = preload("res://parameters.gd")
 #@export var spray_amount: int = parameters.spray_health_change
 #@export var invincible: bool = parameters.player_invincible
 @onready var direction = Vector2(1, 0)
+var is_dead = false
 
 func _physics_process(delta):
+	if is_dead:
+		$WaterSpray.end_spray()
+		return
+	
 	velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed('move_left'):
@@ -61,10 +66,16 @@ func hurt(amount):
 func _on_health_dead():
 	if parameters.player_invincible:
 		return
-	dead.emit()
+	is_dead = true
+	$GPUParticles2D.emitting = true
 	$"/root/SoundManager".play_sound('Death')
+	$AnimatedSprite2D.hide()
+	await get_tree().create_timer($GPUParticles2D.lifetime).timeout
+	dead.emit()
 	
 func restart(restart_position):
+	is_dead = false
+	$AnimatedSprite2D.show()
 	global_position = restart_position
 	$WaterSpray.restart()
 	$Health.restart()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc0waoarlabwy"]
+[gd_scene load_steps=10 format=3 uid="uid://dc0waoarlabwy"]
 
 [ext_resource type="Script" path="res://scenes/big_fire.gd" id="1_vts22"]
 [ext_resource type="Texture2D" uid="uid://cfv4vqcw72smn" path="res://images/big_fire.png" id="1_we6k1"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="3_xsspj"]
+[ext_resource type="Texture2D" uid="uid://tr6a5lcdoprk" path="res://images/fire_particle.png" id="4_5mafw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phd8u"]
 atlas = ExtResource("1_we6k1")
@@ -29,6 +30,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy5xw"]
 size = Vector2(128, 128)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e0wx6"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = -100.0
+initial_velocity_max = -50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
+
 [node name="BigFire" type="Area2D" groups=["big_fire", "fire"]]
 collision_mask = 4
 script = ExtResource("1_vts22")
@@ -46,6 +59,14 @@ shape = SubResource("RectangleShape2D_gy5xw")
 position = Vector2(-64, -96)
 max_health = 250.0
 width = 128
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_e0wx6")
+texture = ExtResource("4_5mafw")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

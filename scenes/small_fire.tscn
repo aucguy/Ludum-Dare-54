@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckj4v7ajmvggm"]
+[gd_scene load_steps=10 format=3 uid="uid://ckj4v7ajmvggm"]
 
 [ext_resource type="Script" path="res://scenes/small_fire.gd" id="1_2j4c8"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="2_10d67"]
 [ext_resource type="Texture2D" uid="uid://71jf2a6uqamn" path="res://images/small_fire.png" id="2_kkokc"]
+[ext_resource type="Texture2D" uid="uid://tr6a5lcdoprk" path="res://images/fire_particle.png" id="4_8nxg4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wgp20"]
 atlas = ExtResource("2_kkokc")
@@ -29,6 +30,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8vqn"]
 size = Vector2(64, 64)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b5mvl"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = -100.0
+initial_velocity_max = -50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
+
 [node name="SmallFire" type="Area2D" groups=["fire"]]
 collision_mask = 4
 script = ExtResource("1_2j4c8")
@@ -46,6 +59,14 @@ shape = SubResource("RectangleShape2D_a8vqn")
 position = Vector2(-32, -48)
 width = 64
 height = 16
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_b5mvl")
+texture = ExtResource("4_8nxg4")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

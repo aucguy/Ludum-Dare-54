@@ -9,9 +9,9 @@ func _ready():
 		map.connect('beat_room', _on_map_beat_room)
 
 func _on_player_dead():
-	$MapContainer/Map.restart_room()
 	if restart_entrance != null:
 		$Player.restart(restart_entrance.restart_position())
+	$MapContainer/Map.restart_room()
 
 func _on_map_enter_room(room, entrance):
 	restart_entrance = entrance

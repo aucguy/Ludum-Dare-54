@@ -34,3 +34,4 @@ func _on_health_dead():
 func disable():
 	$SpawnTimer.stop()
 	$Health.hide()
+	$GPUParticles2D.emitting = true
