@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SoundManager="*res://scenes/sound_manager.tscn"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/owner/Documents/fun/LD54/movie.avi"
+
 [input]
 
 move_left={

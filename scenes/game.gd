@@ -8,6 +8,7 @@ func _ready():
 		$ParameterReloadTimer.start()
 	$World/Player/Health.connect('change', sync_health)
 	#$World/Player/Health.connect('dead', player_dead)
+	$"/root/SoundManager".play_sound('Music')
 
 func _process(delta):
 	$World/Camera.position = $World/Player.position

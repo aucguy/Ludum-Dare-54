@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dno053radxms6"]
+[gd_scene load_steps=8 format=3 uid="uid://dno053radxms6"]
 
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="1_gq2d8"]
 [ext_resource type="AudioStream" uid="uid://qqiwgn08whe6" path="res://sounds/death.wav" id="1_hakdh"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dgf3kq6655qw5" path="res://sounds/gate_close.wav" id="4_em4g2"]
 [ext_resource type="AudioStream" uid="uid://bla5cmdonla2i" path="res://sounds/walk.wav" id="5_u0qqm"]
 [ext_resource type="AudioStream" uid="uid://0sp3cepcihwk" path="res://sounds/beat-room.wav" id="6_jmg63"]
+[ext_resource type="AudioStream" uid="uid://cv7boqerwieo0" path="res://sounds/music.mp3" id="7_kr5xv"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_gq2d8")
@@ -15,9 +16,12 @@ stream = ExtResource("1_hakdh")
 
 [node name="WaterSpray" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hc8bw")
+volume_db = -5.0
+pitch_scale = 0.25
 
 [node name="GateClose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_em4g2")
+volume_db = -1.0
 
 [node name="Walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_u0qqm")
@@ -29,3 +33,7 @@ pitch_scale = 0.5
 
 [node name="BeatRoom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jmg63")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kr5xv")
+volume_db = 2.0
