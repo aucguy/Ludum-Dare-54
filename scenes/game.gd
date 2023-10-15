@@ -10,10 +10,14 @@ func _ready():
 		$ParameterReloadTimer.start()
 	$HUD.hide()
 	$MapContainer/Map/Player/Health.connect('change', sync_health)
+	$"/root/StateManager".game = self
 
 func _process(_delta):
 	$Camera.position = $MapContainer/Map/Player.global_position
-	
+
+func restart_callback():
+	$Camera.position = $MapContainer/Map/Player.global_position
+
 func sync_health():
 	$HUD/Health.set_health($MapContainer/Map/Player/Health.health)
 

@@ -2,6 +2,9 @@ extends Node2D
 
 signal beat_room_signal
 signal win_signal
+var map = null
+var game = null
+var won = false
 
 @onready var current_room = null
 @onready var restart_position = null
@@ -28,8 +31,25 @@ func restart():
 	if current_room == null:
 		return
 	
+	await fadeout()
 	current_room.reset()
 	current_room = null
 
+func fadeout():
+	if map != null:
+		await map.fadeout_callback()
+
+func end_restart():
+	if game != null:
+		game.restart_callback()
+
 func win():
+	if won:
+		return
+	
+	won = true
+	$"/root/SoundManager".play_sound('BeatRoom')
+	$"/root/SoundManager".fade_sound('Music')
+	await fadeout()
 	win_signal.emit()
+	won = false

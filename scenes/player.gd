@@ -50,18 +50,18 @@ func _on_health_dead():
 		return
 	is_dead = true
 	$GPUParticles2D.emitting = true
-	$"/root/SoundManager".play_sound('Death')
 	$WalkAnimation.hide()
+	$"/root/SoundManager".play_sound('Death')
 	await get_tree().create_timer($GPUParticles2D.lifetime).timeout
-	restart($"/root/StateManager".restart_position)
-	$"/root/StateManager".restart()
 	
-func restart(restart_position):
+	await $"/root/StateManager".restart()
+
 	is_dead = false
 	$WalkAnimation.show()
-	global_position = restart_position
+	global_position = $"/root/StateManager".restart_position
 	$WaterSpray.restart()
 	$Health.restart()
+	$"/root/StateManager".end_restart()
 	
 func full_heal():
 	$Health.restart()
