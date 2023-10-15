@@ -17,6 +17,10 @@ func stop_sound(sound_name):
 	
 	stream.stop()
 
+func stop_all_sounds():
+	for child in get_children():
+		child.stop()
+		child.seek(0)
 
 func set_repeating(sound_name):
 	var stream = get_node(sound_name)

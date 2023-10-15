@@ -17,6 +17,7 @@ func _on_pause_menu_resume_game():
 	$Game.resume()
 
 func _on_pause_menu_exit_game():
+	$"/root/SoundManager".stop_all_sounds()
 	$Game.exit()
 	$Menus/PauseMenu.hide()
 	$Menus/MainMenu.show()

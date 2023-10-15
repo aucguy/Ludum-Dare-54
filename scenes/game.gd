@@ -10,7 +10,6 @@ func _ready():
 		$ParameterReloadTimer.start()
 	$HUD.hide()
 	$MapContainer/Map/Player/Health.connect('change', sync_health)
-	$"/root/SoundManager".play_sound('Music')
 
 func _process(_delta):
 	$Camera.position = $MapContainer/Map/Player.global_position
@@ -28,6 +27,7 @@ func start():
 	$HUD/Health.modulate.a = 1
 	show()
 	$HUD.show()
+	$"/root/SoundManager".play_sound('Music')
 
 func pause():
 	get_tree().paused = true
