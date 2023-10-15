@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://caqd5s3s14xub"]
+
+[ext_resource type="Script" path="res://scenes/walk_animation.gd" id="1_0dxei"]
+
+[node name="WalkAnimation" type="Node2D"]
+script = ExtResource("1_0dxei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1

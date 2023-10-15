@@ -21,24 +21,8 @@ func _process(delta):
 	velocity = velocity.normalized()
 	velocity *= speed
 	position += delta * velocity
-	if velocity.y < 0:
-		$AnimatedSprite2D.play('up')
-		$AnimatedSprite2D.flip_h = false
-	elif velocity.x > 0:
-		if velocity.y > 0.01:
-			$AnimatedSprite2D.play('downright')
-		else:
-			$AnimatedSprite2D.play('right')
-		$AnimatedSprite2D.flip_h = false
-	elif velocity.x < 0:
-		if velocity.y > 0.01:
-			$AnimatedSprite2D.play('downright')
-		else:
-			$AnimatedSprite2D.play('right')
-		$AnimatedSprite2D.flip_h = true
-	elif velocity.y > 0:
-		$AnimatedSprite2D.play('down')
-		$AnimatedSprite2D.flip_h = false
+	
+	$WalkAnimation.update(velocity)
 
 func _on_body_entered(body):
 	if body.is_in_group('player'):
@@ -54,7 +38,7 @@ func _on_health_dead():
 	
 func die():
 	is_dead = true
-	$AnimatedSprite2D.hide()
+	$WalkAnimation.hide()
 	$Health.hide()
 	$GPUParticles2D.emitting = true
 	collision_layer = 0

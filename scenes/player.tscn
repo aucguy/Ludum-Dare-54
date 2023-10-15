@@ -1,136 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnknlwo180ra1"]
+[gd_scene load_steps=9 format=3 uid="uid://bnknlwo180ra1"]
 
-[ext_resource type="Texture2D" uid="uid://bubmkyixhpagj" path="res://images/player.png" id="1_b3nop"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_lebjm"]
+[ext_resource type="PackedScene" uid="uid://caqd5s3s14xub" path="res://scenes/walk_animation.tscn" id="3_ekvsu"]
 [ext_resource type="PackedScene" uid="uid://bu333xpclwnas" path="res://scenes/water_spray.tscn" id="3_xqv0s"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="4_hfo1k"]
+[ext_resource type="SpriteFrames" uid="uid://crfl6nvp8bq0y" path="res://resources/player.tres" id="4_x5dl6"]
 [ext_resource type="Texture2D" uid="uid://bymdjuvncacvv" path="res://images/water_spray_particle.png" id="5_fqa4y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ximfm"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsay3"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fgi77"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4vx3"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(0, 120, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ky65e"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(40, 120, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfu1v"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(80, 120, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufc5s"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(0, 40, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4xbr"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(40, 40, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mje6o"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(80, 40, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gjdyf"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(40, 40, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fyul"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(0, 80, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hm7b"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(40, 80, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq8a0"]
-atlas = ExtResource("1_b3nop")
-region = Rect2(80, 80, 40, 40)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qy8r1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ximfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsay3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fgi77")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsay3")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m4vx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ky65e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vfu1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ky65e")
-}],
-"loop": true,
-"name": &"downright",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufc5s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l4xbr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mje6o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gjdyf")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4fyul")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hm7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iq8a0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hm7b")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmx27"]
-radius = 16.0312
+radius = 21.0238
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxl2j"]
 particle_flag_disable_z = true
@@ -152,9 +30,8 @@ script = ExtResource("1_lebjm")
 
 [node name="WaterSpray" parent="." groups=["player"] instance=ExtResource("3_xqv0s")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qy8r1")
-animation = &"downright"
+[node name="WalkAnimation" parent="." instance=ExtResource("3_ekvsu")]
+sprite_frames = ExtResource("4_x5dl6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lmx27")
