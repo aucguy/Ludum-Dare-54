@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dno053radxms6"]
+[gd_scene load_steps=9 format=3 uid="uid://dno053radxms6"]
 
 [ext_resource type="Script" path="res://scenes/sound_manager.gd" id="1_gq2d8"]
 [ext_resource type="AudioStream" uid="uid://qqiwgn08whe6" path="res://sounds/death.wav" id="1_hakdh"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bla5cmdonla2i" path="res://sounds/walk.wav" id="5_u0qqm"]
 [ext_resource type="AudioStream" uid="uid://0sp3cepcihwk" path="res://sounds/beat-room.wav" id="6_jmg63"]
 [ext_resource type="AudioStream" uid="uid://cv7boqerwieo0" path="res://sounds/music.mp3" id="7_kr5xv"]
+[ext_resource type="AudioStream" uid="uid://cec7tvdvpjwp8" path="res://sounds/heal.wav" id="8_tblvf"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_gq2d8")
@@ -37,3 +38,7 @@ stream = ExtResource("6_jmg63")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_kr5xv")
 volume_db = 2.0
+
+[node name="Heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tblvf")
+pitch_scale = 0.75

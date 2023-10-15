@@ -2,7 +2,7 @@ extends Area2D
 
 signal dead
 
-var death
+var disabled = false
 
 @onready var parameters = $"/root/Parameters"
 
@@ -12,9 +12,6 @@ var death
 @export var fire_particle_damage: String
 
 @export var enemy: PackedScene = preload('res://scenes/enemy.tscn')
-#@export var max_spawn_count = parameters.big_fire_max_spawn_count
-#@export var spawn_rate = parameters.big_fire_spawn_rate
-#@export var water_damage: int = parameters.big_fire_particle_damage
 @onready var group_name = 'enemies_from_spawner_' + str(randi())
 
 func _ready():
@@ -28,6 +25,7 @@ func reset():
 	$SpawnTimer.stop()
 	$AnimatedSprite2D.play('on')
 	$Health.restart()
+	disabled = false
 
 func _on_spawn_timer_timeout():
 	var count = get_tree().get_nodes_in_group(group_name).size()
@@ -46,6 +44,10 @@ func _on_health_dead():
 	disable()
 
 func disable():
+	if disabled:
+		return
+	
+	disabled = true
 	$SpawnTimer.stop()
 	$Health.hide()
 	$GPUParticles2D.emitting = true
