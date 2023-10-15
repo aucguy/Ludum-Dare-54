@@ -25,3 +25,5 @@ position = Vector2(1344, -256)
 
 [node name="Star" parent="." instance=ExtResource("6_nfoql")]
 position = Vector2(1152, 0)
+
+[node name="StartPosition" type="Marker2D" parent="."]

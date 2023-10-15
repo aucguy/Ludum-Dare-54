@@ -27,6 +27,7 @@ func _on_timer_timeout():
 func start():
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	get_tree().paused = false
+	$MapContainer/Map.reset()
 	modulate.a = 1
 	$HUD/Health.modulate.a = 1
 	show()

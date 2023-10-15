@@ -5,11 +5,7 @@ signal beat_room
 
 @onready var current_room = null
 
-func _ready():
-	for child in get_children():
-		if 'is_room_instance' in child:
-			pass
-	
+func _ready():	
 	$"/root/StateManager".map = self
 
 func _process(_delta):
@@ -32,3 +28,10 @@ func fadeout_callback():
 	await tween.finished
 	modulate = Color(1, 1, 1, 1)
 	hide()
+
+func reset():
+	$Player.global_position = $StartPosition.global_position
+	
+	for child in get_children():
+		if 'is_room_instance' in child:
+			child.reset()
