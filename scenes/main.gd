@@ -1,13 +1,17 @@
 extends Node
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
 	$"/root/StateManager".connect('win_signal', win_callback)
 
 func _process(_delta):
 	if Input.is_action_just_released('pause_menu'):
-		$Menus/PauseMenu.show()
-		$Game.pause()
+		if $Menus/PauseMenu.visible:
+			$Menus/PauseMenu._on_resume_button_pressed()
+		else:
+			$Menus/PauseMenu.show()
+			$Game.pause()
 
 func _on_main_menu_start_play():
 	$Menus/MainMenu.hide()
