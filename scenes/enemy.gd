@@ -25,6 +25,9 @@ func _process(delta):
 	$WalkAnimation.update(velocity)
 
 func _on_body_entered(body):
+	if is_dead:
+		return
+	
 	if body.is_in_group('player'):
 		body.hurt(player_damage)
 		die()
@@ -42,6 +45,7 @@ func die():
 	$Health.hide()
 	$GPUParticles2D.emitting = true
 	collision_layer = 0
+	collision_mask = 0
 	$"/root/SoundManager".play_sound('Death')
 	await get_tree().create_timer($GPUParticles2D.lifetime).timeout
 	queue_free()
