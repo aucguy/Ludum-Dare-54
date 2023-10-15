@@ -31,6 +31,8 @@ func start():
 	$HUD/Health.modulate.a = 1
 	show()
 	$HUD.show()
+	var timer = get_tree().create_timer(1)
+	await timer.timeout
 	$"/root/SoundManager".play_sound('Music')
 
 func pause():
