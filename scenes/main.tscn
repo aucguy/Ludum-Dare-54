@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmueirbedj1po"]
+
+[ext_resource type="PackedScene" uid="uid://bjs7sqmfuwdjr" path="res://scenes/main_menu.tscn" id="1_73d2h"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_eemb8"]
+[ext_resource type="PackedScene" uid="uid://dhmhjnteijgtf" path="res://scenes/game.tscn" id="3_vh6sx"]
+[ext_resource type="PackedScene" uid="uid://bjt6lxhqpvdq5" path="res://scenes/pause_menu.tscn" id="4_jiksg"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_eemb8")
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="Menus" instance=ExtResource("1_73d2h")]
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("4_jiksg")]
+visible = false
+
+[node name="Game" parent="." instance=ExtResource("3_vh6sx")]
+
+[connection signal="start_play" from="Menus/MainMenu" to="." method="_on_main_menu_start_play"]
+[connection signal="exit_game" from="Menus/PauseMenu" to="." method="_on_pause_menu_exit_game"]
+[connection signal="resume_game" from="Menus/PauseMenu" to="." method="_on_pause_menu_resume_game"]

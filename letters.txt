@@ -1,0 +1,2 @@
+Text: Droplet Dungeon Play Exit Game Resume Game Exit
+Letters: ' DEGPRaegilmnoprstuxy'

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjs7sqmfuwdjr"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_0lv7y"]
+[ext_resource type="Texture2D" uid="uid://bd554lbfeeuyt" path="res://screenshot.png" id="2_6w2jc"]
+[ext_resource type="Texture2D" uid="uid://cp4nevsiq47jn" path="res://images/title.png" id="2_uru65"]
+[ext_resource type="Texture2D" uid="uid://djnns56bf3ojh" path="res://images/play game button.png" id="3_urrsr"]
+[ext_resource type="Texture2D" uid="uid://djpjkn8qpphg2" path="res://images/exit_game_button.png" id="4_v1uhu"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_0lv7y")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(572.444, 318)
+scale = Vector2(0.993827, 0.993827)
+texture = ExtResource("2_6w2jc")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(576, 128)
+texture = ExtResource("2_uru65")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 784.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_urrsr")
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 416.0
+offset_top = 512.0
+offset_right = 784.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_v1uhu")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -37,27 +37,3 @@ func update(velocity):
 	else: #angle < 15.0 / 8 * PI
 		$AnimatedSprite2D.play('up')
 		$AnimatedSprite2D.flip_h = false
-	return
-	
-	if velocity.length() >= 1e-5:
-		if velocity.y < 0:
-			$AnimatedSprite2D.play('up')
-			$AnimatedSprite2D.flip_h = false
-		elif velocity.x > 0:
-			if velocity.y > 0.01:
-				$AnimatedSprite2D.play('downright')
-			else:
-				$AnimatedSprite2D.play('right')
-			$AnimatedSprite2D.flip_h = false
-		elif velocity.x < 0:
-			if velocity.y > 0.01:
-				$AnimatedSprite2D.play('downright')
-			else:
-				$AnimatedSprite2D.play('right')
-			$AnimatedSprite2D.flip_h = true
-		else:
-			$AnimatedSprite2D.play('down')
-			$AnimatedSprite2D.flip_h = false
-	else:
-		velocity = Vector2(0, 0)
-		$AnimatedSprite2D.stop()
