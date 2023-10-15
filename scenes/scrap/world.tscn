@@ -15,5 +15,3 @@ map = ExtResource("3_paxvc")
 [node name="Player" parent="." instance=ExtResource("3_uvawa")]
 
 [node name="Camera" type="Camera2D" parent="."]
-
-[connection signal="dead" from="Player" to="." method="_on_player_dead"]

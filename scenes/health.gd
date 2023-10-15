@@ -17,16 +17,6 @@ extends Node2D
 	set(value):
 		fill_color = value
 		queue_redraw()
-		
-#@export var stroke_color: Color = Color(0, 0, 0, 1):
-#	set(value):
-#		stroke_color = value
-#		queue_redraw()
-		
-#@export var stroke_width: int = 1:
-#	set(value):
-#		stroke_width = value
-#		queue_redraw()
 
 @export var can_die: bool = true
 
@@ -75,9 +65,3 @@ func _draw():
 	$Filled.modulate = Color(fill_color)
 	$Empty.size = Vector2(width, height)
 	$Empty.modulate = Color(fill_color, 0.5)
-	#var rect = Rect2(-width / 2, -height / 2, width * health / max_health, height)
-	#draw_rect(rect, fill_color)
-	#draw_line(Vector2(-width / 2, -height / 2), Vector2(width / 2, -height / 2), stroke_color, stroke_width)
-	#draw_line(Vector2(width / 2, -height / 2), Vector2(width / 2, height / 2), stroke_color, stroke_width)
-	#draw_line(Vector2(width / 2, height / 2), Vector2(-width / 2, height / 2), stroke_color, stroke_width)
-	#draw_line(Vector2(-width / 2, height / 2), Vector2(-width / 2, -height / 2), stroke_color, stroke_width)

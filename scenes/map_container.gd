@@ -2,7 +2,7 @@ extends Node2D
 
 @export var map: PackedScene
 
-const parameters = preload('res://parameters.gd')
+@onready var parameters = $"/root/Parameters"
 
 func _ready():
 	parameters.load_params()

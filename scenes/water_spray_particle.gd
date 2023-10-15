@@ -5,9 +5,9 @@ var max_distance
 var pos
 @onready var distance = 0
 
-func init(velocity, max_distance, origin):
-	self.velocity = velocity
-	self.max_distance = max_distance
+func init(new_velocity, new_max_distance, origin):
+	velocity = new_velocity
+	max_distance = new_max_distance
 	pos = origin
 	scale = Vector2(2, 2)
 	add_to_group('water_particles')
@@ -19,8 +19,8 @@ func _process(delta):
 	if distance > max_distance:
 		queue_free()
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	queue_free()
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	queue_free()

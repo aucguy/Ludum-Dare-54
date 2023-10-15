@@ -1,4 +1,4 @@
-extends Area2D
+extends "scenes/fire.gd"
 
 signal dead
 
@@ -12,8 +12,15 @@ const parameters = preload('res://parameters.gd')
 
 func _ready():
 	$SpawnTimer.wait_time = parameters.big_fire_spawn_rate
+	reset()
+
+func start():
 	$SpawnTimer.start()
+
+func reset():
+	$SpawnTimer.stop()
 	$AnimatedSprite2D.play('on')
+	$Health.restart()
 
 func _on_spawn_timer_timeout():
 	var count = get_tree().get_nodes_in_group(group_name).size()

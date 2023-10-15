@@ -1,9 +1,6 @@
 extends Area2D
 
-const parameters = preload('res://parameters.gd')
-
-#@export var refill_speed: int = parameters.pool_refill_speed
-#@export var capacity: int = parameters.pool_capacity
+@onready var parameters = $"/root/Parameters"
 
 func _ready():
 	$Health.set_max_health(parameters.pool_capacity)

@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-signal dead
+@onready var parameters = $"/root/Parameters"
 
-const parameters = preload("res://parameters.gd")
-
-#@export var input_velocity: int = parameters.player_speed
-#@export var spray_amount: int = parameters.spray_health_change
-#@export var invincible: bool = parameters.player_invincible
 @onready var direction = Vector2(1, 0)
 var is_dead = false
+
+func _ready():
+	$"/root/StateManager".connect('beat_room_signal', full_heal)
 
 func _physics_process(delta):
 	if is_dead:
@@ -56,7 +54,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed('spray_water'):
 		$WaterSpray.start_spray(direction)
-		$Health.increment(-delta * parameters.spray_health_change)
+		if $"/root/StateManager".is_in_room():
+			$Health.increment(-delta * parameters.spray_health_change)
 	else:
 		$WaterSpray.end_spray()
 
@@ -71,7 +70,8 @@ func _on_health_dead():
 	$"/root/SoundManager".play_sound('Death')
 	$AnimatedSprite2D.hide()
 	await get_tree().create_timer($GPUParticles2D.lifetime).timeout
-	dead.emit()
+	restart($"/root/StateManager".restart_position)
+	$"/root/StateManager".restart()
 	
 func restart(restart_position):
 	is_dead = false

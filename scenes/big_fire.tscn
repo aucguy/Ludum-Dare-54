@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dc0waoarlabwy"]
 
-[ext_resource type="Script" path="res://scenes/big_fire.gd" id="1_vts22"]
+[ext_resource type="Script" path="res://scenes/fire.gd" id="1_odl6o"]
 [ext_resource type="Texture2D" uid="uid://cfv4vqcw72smn" path="res://images/big_fire.png" id="1_we6k1"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="3_xsspj"]
 [ext_resource type="Texture2D" uid="uid://tr6a5lcdoprk" path="res://images/fire_particle.png" id="4_5mafw"]
@@ -56,7 +56,11 @@ scale_max = 4.0
 
 [node name="BigFire" type="Area2D" groups=["big_fire", "fire"]]
 collision_mask = 4
-script = ExtResource("1_vts22")
+script = ExtResource("1_odl6o")
+death_sound = "DeathLow"
+fire_spawn_rate = "big_fire_spawn_rate"
+fire_max_spawn_count = "big_fire_max_spawn_count"
+fire_particle_damage = "big_fire_particle_damage"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vtwxt")

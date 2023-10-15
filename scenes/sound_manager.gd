@@ -1,30 +1,30 @@
 extends Node
 
-func play_sound(name):
-	var stream = get_node(name)
+func play_sound(sound_name):
+	var stream = get_node(sound_name)
 	if stream == null:
-		print('unknown sound ' + name)
+		print('unknown sound ' + sound_name)
 		return
 	
 	if not stream.playing:
 		stream.play()
 
-func stop_sound(name):
-	var stream = get_node(name)
+func stop_sound(sound_name):
+	var stream = get_node(sound_name)
 	if stream == null:
-		print('unknown sound ' + name)
+		print('unknown sound ' + sound_name)
 		return
 	
 	stream.stop()
 
 
-func set_repeating(name):
-	var stream = get_node(name)
+func set_repeating(sound_name):
+	var stream = get_node(sound_name)
 	if stream == null:
-		print('unknown sound ' + name)
+		print('unknown sound ' + sound_name)
 		return
 		
-	stream.connect('finished', func(): play_sound(name))	
+	stream.connect('finished', func(): play_sound(sound_name))	
 
 func _ready():
 	set_repeating('Music')

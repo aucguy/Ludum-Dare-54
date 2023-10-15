@@ -1,10 +1,10 @@
 extends Area2D
 
-const parameters = preload("res://parameters.gd")
+@onready var parameters = $"/root/Parameters"
 
-@export var speed: int = parameters.enemy_speed
-@export var water_damage: int = parameters.enemy_particle_damage
-@export var player_damage: int = parameters.player_enemy_damage
+@onready var speed: int = parameters.enemy_speed
+@onready var water_damage: int = parameters.enemy_particle_damage
+@onready var player_damage: int = parameters.player_enemy_damage
 
 var is_dead = false
 
@@ -16,15 +16,10 @@ func _process(delta):
 	if players.size() != 0:
 		await get_tree().physics_frame
 		$NavigationAgent2D.target_position = players[0].global_position
-
-#func _physics_process(delta):
-	#if $NavigationAgent2D.is_navigation_finished():
-	#	return
-		
+	
 	var velocity = $NavigationAgent2D.get_next_path_position() - global_position
 	velocity = velocity.normalized()
 	velocity *= speed
-	#move_and_slide()
 	position += delta * velocity
 	if velocity.y < 0:
 		$AnimatedSprite2D.play('up')
@@ -44,11 +39,6 @@ func _process(delta):
 	elif velocity.y > 0:
 		$AnimatedSprite2D.play('down')
 		$AnimatedSprite2D.flip_h = false
-	
-	#for i in get_slide_collision_count():
-	#	var collision = get_slide_collision(i)
-	#	if collision.get_collider().is_in_group('player'):
-	#		queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group('player'):

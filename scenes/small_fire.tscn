@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ckj4v7ajmvggm"]
 
-[ext_resource type="Script" path="res://scenes/small_fire.gd" id="1_2j4c8"]
+[ext_resource type="Script" path="res://scenes/fire.gd" id="1_v5cds"]
 [ext_resource type="PackedScene" uid="uid://ddoq2dtf3va6t" path="res://scenes/health.tscn" id="2_10d67"]
 [ext_resource type="Texture2D" uid="uid://71jf2a6uqamn" path="res://images/small_fire.png" id="2_kkokc"]
 [ext_resource type="Texture2D" uid="uid://tr6a5lcdoprk" path="res://images/fire_particle.png" id="4_8nxg4"]
@@ -56,7 +56,11 @@ scale_max = 4.0
 
 [node name="SmallFire" type="Area2D" groups=["fire"]]
 collision_mask = 4
-script = ExtResource("1_2j4c8")
+script = ExtResource("1_v5cds")
+death_sound = "Death"
+fire_spawn_rate = "small_fire_spawn_rate"
+fire_max_spawn_count = "small_fire_max_spawn_count"
+fire_particle_damage = "small_fire_particle_damage"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cjodi")

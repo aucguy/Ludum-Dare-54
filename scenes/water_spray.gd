@@ -1,11 +1,8 @@
 extends Node2D
 
-const parameters = preload('res://parameters.gd')
+@onready var parameters = $"/root/Parameters"
 
 @export var particle_scene: PackedScene
-#@export var spawn_rate: int = parameters.spray_particle_rate
-#@export var velocity: int = parameters.spray_particle_velocity
-#@export var max_distance: int = parameters.spray_particle_max_distance
 
 @onready var particles = []
 @onready var clock = 0
@@ -25,9 +22,9 @@ func _process(delta):
 		add_child(particle)
 		total_spawned += 1
 
-func start_spray(direction):
+func start_spray(new_direction):
 	spraying = true
-	self.direction = direction
+	direction = new_direction
 	$"/root/SoundManager".play_sound('WaterSpray')
 
 func end_spray():

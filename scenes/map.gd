@@ -7,9 +7,8 @@ signal beat_room
 
 func _ready():
 	for child in get_children():
-		if child.is_in_group('room_containers'):
-			child.connect('enter_room', enter_room_callback)
-			child.connect('beat_room', beat_room_callback)
+		if 'is_room_instance' in child:
+			pass
 			
 func enter_room_callback(room, entrance):
 	current_room = room
