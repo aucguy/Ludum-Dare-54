@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbbpygbdbunoe"]
+[gd_scene load_steps=7 format=3 uid="uid://dbbpygbdbunoe"]
 
 [ext_resource type="TileSet" uid="uid://bbbu21713u1oi" path="res://resources/tileset.tres" id="1_gdm2q"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_rj0uy"]
 [ext_resource type="PackedScene" uid="uid://bnknlwo180ra1" path="res://scenes/player.tscn" id="2_uvawl"]
 [ext_resource type="PackedScene" uid="uid://ctchucyhs6d5k" path="res://rooms/room_0.tscn" id="4_ocr72"]
 [ext_resource type="PackedScene" uid="uid://b7523ssg0ts72" path="res://rooms/room_1.tscn" id="5_s1uq4"]
+[ext_resource type="PackedScene" uid="uid://bca1yfbvei6ej" path="res://scenes/star.tscn" id="6_nfoql"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_rj0uy")
@@ -21,3 +22,6 @@ position = Vector2(448, -128)
 position = Vector2(1344, -256)
 
 [node name="Player" parent="." instance=ExtResource("2_uvawl")]
+
+[node name="Star" parent="." instance=ExtResource("6_nfoql")]
+position = Vector2(1152, 0)

@@ -1,6 +1,7 @@
 extends Node2D
 
 signal beat_room_signal
+signal win_signal
 
 @onready var current_room = null
 @onready var restart_position = null
@@ -29,3 +30,6 @@ func restart():
 	
 	current_room.reset()
 	current_room = null
+
+func win():
+	win_signal.emit()
