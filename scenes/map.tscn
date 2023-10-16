@@ -35,4 +35,3 @@ position = Vector2(4032, -256)
 position = Vector2(4800, -32)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(2304, 0)

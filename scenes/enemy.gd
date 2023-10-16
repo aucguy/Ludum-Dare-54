@@ -29,6 +29,8 @@ func _on_body_entered(body):
 		return
 	
 	if body.is_in_group('player'):
+		if body.is_dead:
+			return
 		body.hurt(player_damage)
 		die()
 

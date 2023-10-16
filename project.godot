@@ -21,6 +21,10 @@ SoundManager="*res://scenes/sound_manager.tscn"
 StateManager="*res://scenes/state_manager.tscn"
 Parameters="*res://scenes/parameters.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/owner/Documents/fun/LD54/movie.avi"

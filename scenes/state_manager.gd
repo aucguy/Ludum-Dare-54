@@ -32,6 +32,7 @@ func restart():
 		return
 	
 	await fadeout()
+	get_tree().call_group('enemies', 'queue_free')
 	current_room.reset()
 	current_room = null
 

@@ -25,6 +25,8 @@ func reset():
 	$SpawnTimer.stop()
 	$AnimatedSprite2D.play('on')
 	$Health.restart()
+	$Health.show()
+	$GPUParticles2D.emitting = false
 	disabled = false
 
 func _on_spawn_timer_timeout():

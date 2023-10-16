@@ -18,10 +18,6 @@ func enter_room_callback(room, entrance):
 func beat_room_callback():
 	beat_room.emit()
 
-#func restart_room():
-#	if current_room != null:
-#		current_room.destroy()
-		
 func fadeout_callback():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, 'modulate', Color(0, 0, 0, 1), 2)
